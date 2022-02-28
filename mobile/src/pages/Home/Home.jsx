@@ -1,53 +1,56 @@
-import React from 'react';
-import {Text,View, FlatList} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text,View, FlatList, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Icon } from 'react-native-elements';
 
+
+import api from '../../services/api';
 import styles from './style';
-
-const DATA =[
-	{
-		"id": "8c2c",
-		"name": "Matheus Ribeiro Dias",
-		"email": "tuezin@gmail.com",
-		"contact": "(11) 99891-9292",
-		"zipcode": "18205-000"
-	},
-	{
-		"id": "bb47",
-		"name": "Rafael Ribeiro Dias",
-		"email": "rafanesck_@gmail.com",
-		"contact": "(11) 99891-9292",
-		"zipcode": "18205-000"
-	},
-	{
-		"id": "b0fe",
-		"name": "Otavio Ribeiro Dias",
-		"email": "otaviodias@gmail.com",
-		"contact": "(11) 99891-9292",
-		"zipcode": "18205-000"
-	}
-]
-
-  const Item = ({ name, email, contact }) => (
-    <View style={styles.listItem}>
-      <Text>{name} - {email} - {contact}</Text>
-    </View>
-  );
 
 
 export default function Home(){
+	const [clients, setClients] = useState([]);
+	const navigation = useNavigation();
 
-        const renderItem = ({ item }) => (
-            <Item name={item.name} email={item.email} contact={item.contact}/>
-        )
+	function navigateToProfile(client) {
+		navigation.navigate('Profile', { client });
+	};
 
-    return (
-        <View style={styles.container}>
-            <FlatList
-            data={DATA}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-            style={styles.flatList}
-            />
-        </View>
-    );
+	async function loadClients() {
+		const response = await api.get('clients');
+		setClients(response.data);
+	}
+
+	useEffect(() => {
+		loadClients();
+	}, []);
+
+
+			return (
+				<View style={styles.container}>
+				<FlatList
+					data={clients}
+					style={styles.clientList}
+					keyExtractor={client => String(client.id)}
+					showsVerticalScrollIndicator = {false}
+					renderItem={({ item: client }) => (
+					<View style={styles.client}>
+						<View style={styles.clientInfo}>
+							<Text style={styles.clientProperty}>Nome:</Text>
+							<Text style={styles.clientValue}>{client.name}</Text>
+							<Text style={styles.clientProperty}>Contato:</Text>
+							<Text style={styles.clientValue}>{client.contact}</Text>
+						</View>
+						
+						<TouchableOpacity 
+						style={styles.detailsButton} 
+						onPress={() => navigateToProfile(client)}>
+							<Text style={styles.detailsButtonText}>Ver Perfil</Text>
+							<Icon name="arrow-right" type="feather" size={16} color="#121113" />
+						</TouchableOpacity>
+					</View>
+					)}
+				/>	
+				</View>
+			);
 }
