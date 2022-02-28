@@ -45,6 +45,6 @@ module.exports = {
         const {id} = request.params;
 
         const client = await connection('client').where('id', id).delete();
-        return response.status(204).send();
+        return response.status(204).send('Cliente deletado com sucesso!');
     }
 }

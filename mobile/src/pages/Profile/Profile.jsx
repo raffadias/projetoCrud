@@ -1,13 +1,28 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Button, Avatar } from 'react-native-elements';
-
 import styles from './style';
+import api from '../../services/api';
 
 export default function Profile(){
 
     const navigation = useNavigation();
+
+    function navigateToEditProfile(){
+        navigation.navigate('EditProfile');
+    }
+
+    function navigateToHome(){
+        navigation.navigate('Home');
+    }
+
+    async function deleteClient(id){
+        const response = await api.delete(`clients/${id}`);
+        Alert.alert('Cliente deletado com sucesso!');
+        console.log(response);
+    }
+
     const route = useRoute();
 
     const client = route.params.client;
@@ -24,6 +39,8 @@ export default function Profile(){
                 <View style={styles.client}>
 						<View style={styles.clientInfo}>
                             <View style={styles.clientMainInfo}>
+                                <Text style={styles.clientProperty}>ID:</Text>
+                                <Text style={styles.clientValue}>{client.id}</Text>
                                 <Text style={styles.clientProperty}>Nome:</Text>
                                 <Text style={styles.clientValue}>{client.name}</Text>
                                 <Text style={styles.clientProperty}>Contato:</Text>
@@ -39,13 +56,14 @@ export default function Profile(){
                             <Button
                             title="Editar Perfil" 
                             buttonStyle={styles.editClient}
-                            onPress={()=>{}}/>
+                            onPress={navigateToEditProfile}/>
 
 
                             <Button 
                             title="Deletar Perfil" 
                             buttonStyle={styles.deleteClient} 
-                            onPress={()=>{}}/>
+                            onPress={()=>deleteClient(client.id)}
+                            />
                         </View>
                 </View>
         </View>

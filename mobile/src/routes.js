@@ -7,7 +7,7 @@ const AppStack = createNativeStackNavigator();
 
 import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
-import EditProfile from './pages/Profile/EditProfile';
+import EditProfile from './pages/EditProfile/EditProfile';
 import RegisterForm from './pages/Register/RegisterForm';
 import { Icon } from 'react-native-elements';
 

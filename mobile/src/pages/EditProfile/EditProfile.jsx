@@ -4,18 +4,18 @@ import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import api from '../../services/api';
 import styles from './style';
 
-export default function RegisterForm(){
+export default function EditProfile(){
 
     const [name, setName] = useState([]);
     const [email, setEmail] = useState([]);
     const [contact, setContact] = useState([]);
     const [zipcode, setZipcode] = useState([]);
 
-   async function register(data){
+   async function update(data){
     const baseURL = 'http://192.168.0.103:3333';
-   return api({
-        url: `${baseURL}/register`,
-        method: "POST",
+    return api({
+        url: `${baseURL}/clients/${id}`,
+        method: "PUT",
         timeout: 5000,
         data: data,
         headers: {
@@ -37,7 +37,7 @@ export default function RegisterForm(){
             zipcode: zipcode
         };
 
-        register(data)
+        update(data)
         .then((response) => {
             console.log(response);
             Alert.alert('Sucesso! Cliente cadastrado.');
@@ -51,7 +51,7 @@ export default function RegisterForm(){
     return (
         <View style={styles.container}>
                     <Text style={styles.inputTitle}>
-                        Cadastrar Cliente
+                        Editar Cliente
                     </Text>
                 <View style={styles.inputContainer}>
                 <TextInput
@@ -96,7 +96,7 @@ export default function RegisterForm(){
                 style={styles.detailsButton}
                 onPress={() => saveClient()}
                 >
-                    <Text style={styles.detailsButtonText}>Cadastrar</Text>
+                    <Text style={styles.detailsButtonText}>Concluir</Text>
                 </TouchableOpacity>
         </View>
     );
