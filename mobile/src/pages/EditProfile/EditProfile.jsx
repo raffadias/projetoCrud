@@ -11,42 +11,42 @@ export default function EditProfile(){
     const [contact, setContact] = useState([]);
     const [zipcode, setZipcode] = useState([]);
 
-   async function update(data){
-    const baseURL = 'http://192.168.0.103:3333';
-    return api({
-        url: `${baseURL}/clients/${id}`,
-        method: "PUT",
-        timeout: 5000,
-        data: data,
-        headers: {
-            Accept: 'application/json'
-        }
-   }).then((response) => {
-       return Promise.resolve(response)
-   }).catch((error) =>{
-       return Promise.reject(error)
-   })
-        
-   };
-
-   const saveClient = () => {
-        const data = {
-            name: name,
-            email: email,
-            contact: contact,
-            zipcode: zipcode
-        };
-
-        update(data)
-        .then((response) => {
-            console.log(response);
-            Alert.alert('Sucesso! Cliente cadastrado.');
-        })
-        .catch((error) => {
-            console.log('Deu Erro');
-            console.log(error);
-        });
-   };
+    async function updateClient(data){
+        const baseURL = 'http://192.168.0.103:3333';
+       return api({
+            url: `${baseURL}/clients/${data.id}`,
+            method: "PUT",
+            timeout: 5000,
+            data: data,
+            headers: {
+                Accept: 'application/json'
+            }
+       }).then((response) => {
+           return Promise.resolve(response)
+       }).catch((error) =>{
+           return Promise.reject(error)
+       })
+            
+       };
+    
+       const saveClient = () => {
+            const data = {
+                name: name,
+                email: email,
+                contact: contact,
+                zipcode: zipcode
+            };
+    
+            updateClient(data)
+            .then((response) => {
+                console.log(response);
+                Alert.alert('Sucesso! Cliente atualizado.');
+            })
+            .catch((error) => {
+                console.log('Deu Erro');
+                console.log(error);
+            });
+       };
 
     return (
         <View style={styles.container}>
