@@ -6,7 +6,7 @@ export default StyleSheet.create({
         backgroundColor: '#899878',
     },
     inputTitle: {
-        paddingTop: 30,
+        paddingTop: 20,
         alignSelf: 'center',
         marginTop: 50,
         fontSize: 40,

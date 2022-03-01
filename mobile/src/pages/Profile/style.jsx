@@ -7,7 +7,7 @@ export default StyleSheet.create({
     },
 
     avatarClient: {
-        marginTop: 20,
+        marginTop: 10,
         alignItems: 'center',
     },
 
@@ -17,7 +17,7 @@ export default StyleSheet.create({
     },
 
     clientInfo: {
-            marginTop: 32,
+            marginTop: 20,
             marginLeft: 12,
             marginRight: 12
     },
@@ -48,7 +48,7 @@ export default StyleSheet.create({
     }, 
 
     editClient: {
-        backgroundColor: '#899878',
+        backgroundColor: '#121113',
         borderRadius: 8,
         marginBottom: 10,
     },

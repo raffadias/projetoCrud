@@ -27,7 +27,6 @@ export default function Routes() {
                             <Button
                             onPress={() => navigation.navigate("RegisterForm")}
                             type="clear"
-                            color="#121113"
                             icon={<Icon name="add" size={30}/>}
                             />
                         )

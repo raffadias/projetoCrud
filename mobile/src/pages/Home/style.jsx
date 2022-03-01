@@ -47,7 +47,9 @@ export default StyleSheet.create({
     detailsButton: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        padding: 10,
+        borderRadius: 8,
+        backgroundColor: '#899878',
     },
 
     detailsButtonText: {
