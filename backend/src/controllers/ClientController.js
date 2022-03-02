@@ -3,7 +3,7 @@ const connection = require('../database/connection');
 
 module.exports = {
 
-    // List client
+    // Listar cliente
     async list (request, response) {
         const clients = await connection('client').select('*');
         return response.json(clients);
@@ -26,12 +26,12 @@ module.exports = {
         return response.json({id, name, email, contact, zipcode});
     },
 
-    // Update client
+    // Editar cliente
     async update (request, response) {
         const {id} = request.params;
         const { name, email, contact, zipcode} = request.body;
 
-        await connection('client').update({
+        await connection('client').where('id', id).update({
             name,
             email,
             contact,
@@ -40,7 +40,7 @@ module.exports = {
         return response.json({id, name, email, contact, zipcode});
     },
 
-    // Delete Client
+    // Deletar Client
     async delete(request,response) {
         const {id} = request.params;
 

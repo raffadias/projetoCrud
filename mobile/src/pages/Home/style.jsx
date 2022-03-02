@@ -58,5 +58,21 @@ export default StyleSheet.create({
         fontWeight: 'bold'
     },
 
+    refreshButton: {
+        alignSelf: 'center',
+        marginTop: 20,
+        backgroundColor: '#e4e6c3',
+        padding: 14,
+        paddingLeft: 130, 
+        paddingRight: 130,
+        borderRadius: 8, 
+    },
+
+    refreshButtonText: {
+        color: '#121311',
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+
 
 });

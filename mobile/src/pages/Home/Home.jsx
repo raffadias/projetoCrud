@@ -28,6 +28,12 @@ export default function Home(){
 
 			return (
 				<View style={styles.container}>
+				<TouchableOpacity
+				style={styles.refreshButton}
+				onPress={() => loadClients()}
+				>
+					<Text style={styles.refreshButtonText}>Atualizar Lista</Text>
+				</TouchableOpacity>
 				<FlatList
 					data={clients}
 					style={styles.clientList}

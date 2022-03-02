@@ -8,9 +8,13 @@ import api from '../../services/api';
 export default function Profile(){
 
     const navigation = useNavigation();
+    
+    const route = useRoute();
+
+    const client = route.params.client;
 
     function navigateToEditProfile(){
-        navigation.navigate('EditProfile');
+        navigation.navigate('EditProfile', ({ client }));
     }
 
     function navigateToHome(){
@@ -23,9 +27,7 @@ export default function Profile(){
         console.log(response);
     }
 
-    const route = useRoute();
-
-    const client = route.params.client;
+    
 
     return (
         <View style={styles.container}>
