@@ -7,7 +7,7 @@ export default StyleSheet.create({
     },
 
     avatarClient: {
-        marginTop: 10,
+        marginTop: 30,
         alignItems: 'center',
     },
 
@@ -31,6 +31,14 @@ export default StyleSheet.create({
         backgroundColor: '#e4e6c3',
     },
 
+    clientName: {
+        color: '#121113',
+        fontSize: 23,
+        alignSelf: 'center',
+        fontWeight: 'bold',
+        marginTop: 5
+    },
+
     clientProperty: {
         fontSize: 20,
         color: '#121113',
@@ -48,7 +56,7 @@ export default StyleSheet.create({
     }, 
 
     editClient: {
-        backgroundColor: '#121113',
+        backgroundColor: '#899878',
         borderRadius: 8,
         marginBottom: 10,
     },

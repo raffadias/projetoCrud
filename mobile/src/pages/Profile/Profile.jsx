@@ -35,16 +35,17 @@ export default function Profile(){
                     <Avatar
                     size={80}              
                     rounded
-                    source={{uri: 'https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295429_960_720.png'}}              
+                    source={{uri: 'https://cdn.pixabay.com/photo/2021/07/25/08/03/account-6491185_960_720.png'}}              
                     />                         
                 </View>
+                <View><Text style={styles.clientName}>{client.name}</Text></View>
                 <View style={styles.client}>
+                        
 						<View style={styles.clientInfo}>
                             <View style={styles.clientMainInfo}>
                                 <Text style={styles.clientProperty}>ID:</Text>
                                 <Text style={styles.clientValue}>{client.id}</Text>
-                                <Text style={styles.clientProperty}>Nome:</Text>
-                                <Text style={styles.clientValue}>{client.name}</Text>
+                                
                                 <Text style={styles.clientProperty}>Contato:</Text>
 							    <Text style={styles.clientValue}>{client.contact}</Text>
                             </View>
